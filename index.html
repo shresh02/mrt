@@ -107,7 +107,7 @@
         <!-- Sections -->
         <section id="start" class="sections lightbg">
             <div class="container text-center">
-                <button onclick="setTimeout(Experiment, 3000);" class="button">Start</button>
+                <button onclick="setTimeout(Experiment, 500);" class="button">Start</button>
                 <div class="div_instructions "><h1 style="padding-top: 80px;"id="instructions"> </h1></div>
             </div>
 
@@ -143,18 +143,18 @@
 <script>
 function Experiment() {
 
-setTimeout(function(){ document.getElementById("instructions").innerHTML = "Blink!";}, 5000
+setTimeout(function(){ document.getElementById("instructions").innerHTML = "Blink Once!";}, 3000
     );
 
-setTimeout(function(){ document.getElementById("instructions").innerHTML = "Focus on your Breathing!";}, 3000
+setTimeout(function(){ document.getElementById("instructions").innerHTML = "Focus on your Breathing!";}, 7000
     );
-setTimeout(function(){ document.getElementById("instructions").innerHTML = "Blink!";}, 3000
+setTimeout(function(){ document.getElementById("instructions").innerHTML = "Blink Again!";}, 9000
     );
-setTimeout(function(){ document.getElementById("instructions").innerHTML = "Focus on your breathing!";}, 3000
+setTimeout(function(){ document.getElementById("instructions").innerHTML = "Focus on your breathing!";}, 12000
     );
-setTimeout(function(){ document.getElementById("instructions").innerHTML = "Blink!";}, 3000
+setTimeout(function(){ document.getElementById("instructions").innerHTML = "Blink Once More!";}, 15000
     );
-setTimeout(function(){ document.getElementById("instructions").innerHTML = "Focus on your breathing!";}, 3000
+setTimeout(function(){ document.getElementById("instructions").innerHTML = "Focus on your breathing!";}, 18000
     );
 }
 </script>
