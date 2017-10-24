@@ -1014,8 +1014,9 @@ textarea::-ms-input-placeholder
     text-decoration: none;
 
 /*    left: 190px;
-    position: absolute;
-    margin-top: 50px;*/
+    position: absolute;*/
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .button:hover {
@@ -1026,4 +1027,14 @@ textarea::-ms-input-placeholder
   background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
+}
+
+.div_instructions{
+    margin: auto;
+    width: 50%;
+    border: 3px solid rgba(51, 122, 183, 0.12);
+    padding: 10px;
+    height: 300px;
+    text-align: center;
+    vertical-align: middle;
 }
