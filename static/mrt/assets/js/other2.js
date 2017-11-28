@@ -6,9 +6,9 @@ var start_delay = 300;
 var delay = 2500;
 var stage = -1;
 
-var instr_url1 = "https://www.youtube.com/embed/XGSy3_Czz8k"
-var instr_url2 = "https://www.youtube.com/embed/j53oZC0G9sY"
-var instr_url3 = "https://www.youtube.com/embed/14NLL8RVVRg"
+var instr_url1 = "https://www.youtube.com/embed/oBK8xwWAsts"
+var instr_url2 = "https://www.youtube.com/embed/UtI38UkbLgg"
+var instr_url3 = "https://www.youtube.com/embed/oDtsiVMDCW0"
 var closingmsg = "Thank you for participating in this experiment. Goodbye!"
 var http = new XMLHttpRequest();
 var base_url = "sendmsg/"
