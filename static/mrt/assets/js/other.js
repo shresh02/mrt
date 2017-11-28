@@ -17,7 +17,10 @@ function check(elem){$(elem).addClass('checked');}
 
 function DisplayTextAndSaveTime(msg){
     if(msg == ''){var url = base_url.concat("BLANK","/");}
-    else{var url = base_url.concat(msg,"/");}
+    else{
+        //Strip out all spaces and special characters from msg before sending it
+        m = msg.replace(/[^a-zA-Z]/g, "");
+        var url = base_url.concat(m,"/");}
     
     http.open("GET", url, false);// false for synchronous request
     http.send( null );
