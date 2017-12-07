@@ -9,6 +9,9 @@ var pwd_delay = 4000;
 var blank_delay = 2000;
 var pre_text_delay = 3000;
 
+//Think Passthought delay to 5 seconds
+var think_delay = 5000
+
 var instr_url1 = "When you see the words BLINK, please do so for 30 seconds"
 var instr_url2 = "step2_pretext"//"https://www.youtube.com/embed/81eRBN6o6Ic"
 var instr_url3 = "step3_pretext"//"https://www.youtube.com/embed/4-m-QqKaZ08"
@@ -114,15 +117,15 @@ function setPassthought(){
 
     displayText2('Think Passthought',0);
 
-    displayText2('',(delay*1)+(blank_delay*0));
+    displayText2('',(think_delay*1)+(blank_delay*0));
 
-    displayText2('Think Passthought',(delay*1)+(blank_delay*1));
+    displayText2('Think Passthought',(think_delay*1)+(blank_delay*1));
 
-    displayText2('',(delay*2)+(blank_delay*1));
+    displayText2('',(think_delay*2)+(blank_delay*1));
 
-    displayText2('Think Passthought',(delay*2)+(blank_delay*2));
-    displayText2('You have successfully set your Passthought!!!',(delay*3)+(blank_delay*2));
-    completeStep(instr_url3,(delay*3)+(blank_delay*2),"#Passthought_Setting");
+    displayText2('Think Passthought',(think_delay*2)+(blank_delay*2));
+    displayText2('You have successfully set your Passthought!!!',(think_delay*3)+(blank_delay*2));
+    completeStep(instr_url3,(think_delay*3)+(blank_delay*2),"#Passthought_Setting");
 }
 
 function login(){
@@ -139,8 +142,14 @@ function login(){
 
 
     displayText2('Passthought Authenticated',(delay*3)+(pwd_delay*2));
-
     displayText2('You have been successfully authenticated!!!',(delay*3)+(pwd_delay*3));
+
+
+    displayText2('Passthought Authenticated',(delay*4)+(pwd_delay*3));
+    displayText2('You have been successfully authenticated!!!',(delay*4)+(pwd_delay*3));
+
+    displayText2('Passthought Authenticated',(delay*5)+(pwd_delay*4));
+    displayText2('You have been successfully authenticated!!!',(delay*5)+(pwd_delay*4));
 
 
     completeStep(0,(delay*3)+(pwd_delay*3)+start_delay,"#Login");

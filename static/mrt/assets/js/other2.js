@@ -114,11 +114,11 @@ function setPassthought(){
 
     displayText2('Think Passthought',0);
 
-    displayText2('',(delay*1)+(blank_delay*0));
+    displayText2('Authentication succeeded',(delay*1)+(blank_delay*0));
 
     displayText2('Think Passthought',(delay*1)+(blank_delay*1));
 
-    displayText2('',(delay*2)+(blank_delay*1));
+    displayText2('Authentication succeeded',(delay*2)+(blank_delay*1));
 
     displayText2('Think Passthought',(delay*2)+(blank_delay*2));
     displayText2('You have successfully set your Passthought!!!',(delay*3)+(blank_delay*2));
