@@ -2,145 +2,155 @@
 // https://www.w3schools.com/howto/howto_js_todolist.asp
 
 //Function that marks the sidebar elements as done
-var start_delay = 300
-var delay_increments = 2
-var always_reject = 1
-var json_data = {
-   table: []
-};
+var start_delay = 300;
+var delay = 2500;
+var stage = -1;
 
+var instr_url1 = "https://www.youtube.com/embed/LPb3aKmukt0"
+var instr_url2 = "https://www.youtube.com/embed/81eRBN6o6Ic"
+var instr_url3 = "https://www.youtube.com/embed/4-m-QqKaZ08"
+var closingmsg = "Thank you for participating in this experiment. Goodbye!"
+var http = new XMLHttpRequest();
+var base_url = "sendmsg/"
 
 function check(elem){$(elem).addClass('checked');}
 
-function completeExp(){
-    var json = JSON.stringify(json_data);
+function DisplayTextAndSaveTime(msg){
+    if(msg == ''){var url = base_url.concat("BLANK","/");}
+    else{var url = base_url.concat(msg,"/");}
     
-       var txtFile = "Users/monicah/Desktop/test.txt";
-       var file = new File(txtFile,"write");
-       var str = JSON.stringify(json);
+    http.open("GET", url, false);// false for synchronous request
+    http.send( null );
+    console.log(http.responseText);
 
-       log("opening file...");
-       file.open(); 
-       log("writing file..");
-       file.writeline(str);
-       file.close();
-}
-function login(a_r,d){
-    console.log('a_r is: '+String(a_r))
-    setTimeout(function(){
-        displayText('Think Passthought to Aunthenticate',d,0,3,a_r);  
-
-        // Always Rejected Group
-        var i=0;
-        var max_tries =3
-        while (i < max_tries) {
-            displayText('Error\n\nTry Again! '+ 'Tries left: ' +String(max_tries -i),d*i,0,3,a_r);
-            i++;
-            // console.log(i);
-        }
-        displayText('Authentication Failed',d*max_tries,1,3,a_r);
-        completeExp();
-
-
- 
-
-
-
-
-
-
-    }, start_delay);
-
-};
-function babyphoto(x){
-    if(x == 1){var src = "/static/mrt/assets/images/baby_cry.jpg"}
-        else{ var src = "/static/mrt/assets/images/baby.jpg"}
-    var elem = document.createElement("img");
-    elem.setAttribute("src", src);
-    // elem.setAttribute("height", "768");
-    // elem.setAttribute("width", "1024");
-    elem.setAttribute("alt", "baby");
-    document.getElementById("instructions").appendChild(elem);
-}
-
-function setPassthought(a_r){
-    displayText('Think Passthought',0,0,2,a_r);
-
-    setTimeout(function(){ 
-        start_delay =start_delay + start_delay;
-        displayText('Think Passthought Again',start_delay, 0,2,a_r);
-
-        start_delay =start_delay + start_delay;
-        displayText('Think Passthought one last time',start_delay, 1,2,a_r);
-    })    
-}
-
-function saveTime(msg){
     document.getElementById("instructions").innerHTML = msg;
+
     var time = JSON.stringify(new Date().getTime() / 1000);
-    json_data.table.push({time: time, prompt:msg});
+    console.log(time, msg);
+    // json_data.table.push({time: time, prompt:msg});
 
 }
 
-
-function displayText(msg,delay, complete,stage,a_r){
+function displayText2(msg,delay){
 
     setTimeout(function(){ 
-        saveTime(msg)
+        DisplayTextAndSaveTime(msg)
         delay =delay 
-        if(complete>0 && stage ==1){
-            setTimeout(function(){check('#Calibration');alert('Calibration Complete!'); setPassthought(a_r);}, delay  );};
-        if(complete>0 && stage == 2)
-        {
-            setTimeout(function(){check('#Passthought_Setting');alert('Passthought Successfully Set!'); login(a_r,delay);}, delay );};
-    
-        if(complete>0 && stage == 3 &&  a_r == 0){
-            setTimeout(function(){check('#Login');alert('Login Successfully!!'); babyphoto(a_r);}, 0 );
-        };
-
-        if(complete>0 && stage == 3 &&  a_r == 1){
-                setTimeout(function(){alert('Login Failed!!'); babyphoto(a_r);}, 0 );
-            };
 
         }, delay);
+}
+function babyphoto(){
+    document.getElementById("instructions").style.paddingTop = 0;
+    document.getElementById("baby").style.display= "inline";
+    document.getElementById("playtext").innerHTML = closingmsg;
+    document.getElementById("play").style.display= "inline";
+}
+
+function completeStep(url,d,c){
+        setTimeout(function (){
+            check(c);
+            displayText2('',0);
 
 
+            if(url != 0){
+                document.getElementById("calibration_instructions").src = url;//"inline";
 
+                setTimeout(function (){
+                    document.getElementById("calibration_instructions").style.display= "inline";
+                    document.getElementById("play").style.display= "inline";
+                    document.getElementById("proceed").disabled = false;
+                    },delay);
+                }
+            else{
+                setTimeout(function (){babyphoto();},5);
+            }
 
+        },d);    
 }
 
 
+function setup(){
+    completeStep(instr_url1,start_delay,"#setup")
+}
 
-function initialize(){
-    console.log("initialize");
-    displayText('Blink',0,0,1, always_reject);
+function calibrate(){
+    console.log("Calibrating .....")
+    document.getElementById("calibration_instructions").style.display= "none";
+    displayText2('Blink',start_delay);
 
-    start_delay =start_delay + start_delay;
-    displayText('Focus on your breathing!',start_delay, 0,1,always_reject);
+    start_delay =start_delay + delay;
+    displayText2('Focus on your breathing!',start_delay);
+    start_delay =start_delay + delay;
+    displayText2('Calibration Complete!!!',start_delay);
+    start_delay =start_delay + delay;
 
-    start_delay =start_delay + start_delay;
-    displayText('Blink',start_delay, 0,1,always_reject)  ;
-
-
-    start_delay =start_delay + start_delay;
-    displayText('Focus on your breathing!',start_delay, 1,1,always_reject);
-
+    completeStep(instr_url2,start_delay,"#Calibration")
 
 }
 
+function setPassthought(){
+    document.getElementById("calibration_instructions").style.display= "none";//"inline";
 
+    displayText2('Think Passthought',0);
+    displayText2('Think Passthought Again',start_delay);
+    start_delay =start_delay + delay;
+    displayText2('Think Passthought one last time',start_delay);
+    start_delay =start_delay + delay;
+    displayText2('You have successfully set your Passthought!!!',start_delay);
+    start_delay =start_delay + delay;
+    completeStep(instr_url3,start_delay,"#Passthought_Setting");
+}
+
+function login(){
+    document.getElementById("calibration_instructions").style.display= "none";//"inline";
+
+    displayText2('Think Passthought to Aunthenticate',0);
+    //start_delay =start_delay + delay;
+
+    // Always Rejected Group
+    var i=0;
+    var max_tries =3
+    while (i < max_tries) {
+        start_delay = start_delay+i*delay
+        displayText2('Error\n\nTry Again! Tries left: '+String(max_tries -i),start_delay);
+        i++;
+        // console.log(i);
+    }
+    start_delay =start_delay + delay;
+    displayText2('Authentication Failed',start_delay);
+
+
+    start_delay =start_delay + delay;
+    completeStep(0,start_delay,"#Login");
+
+};
+
+
+
+
+function proceed(){
+    //s =  $(this).data("stage");
+    document.getElementById("play").style.display= "none";
+    document.getElementById("proceed").disabled = true;
+
+    if (stage == -1){ setup();stage = 0;}
+    else if(stage == 0){ calibrate();stage = 1;}
+    else if(stage == 1){ setPassthought(); stage = 2;}
+    else if (stage == 2){login();}
+    else{
+
+        console.log('error');
+    }
+}
 
 
 //Populate Starter Charts
 $(document).ready(function () {
-    $('.startbutton_class').on('click', initialize);
-    // $('#Calibration').on('click', calibrate);
-    // $('#Passthought_Setting').on('click', setPassthought);
-    // $('#Login').on('click', login);
 
+    $('.proceedbutton_class').data("stage",stage);    
+    $('.proceedbutton_class').on('click', proceed);
 
 });
-
 
 
 
