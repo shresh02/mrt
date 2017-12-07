@@ -1031,13 +1031,18 @@ textarea::-ms-input-placeholder
 .button:disabled {
     background: #dddddd;
 }
-.div_instructions{
+#div_instructions{
     margin: auto;
-    border: 3px solid rgba(51, 122, 183, 0.12);
-    padding: 10px;
-    height: 300px;
     text-align: center;
     vertical-align: middle;
+    border: 3px solid rgba(51, 122, 183, 0.12);
+/*    padding: 10px;
+*/    height: 300px;
+ 
+    height:350px;
+    border-style: solid;
+
+
 }
 
 
