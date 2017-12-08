@@ -174,9 +174,9 @@ function login(){
     displayText2('Classifying......',(auth_delay*4)+(pwd_delay*3) + (cmsg_delay*3));
     displayText2('Authentication Successful',(auth_delay*4)+(pwd_delay*3)+ (cmsg_delay*4));
 
-    displayText2('You have been successfully authenticated!!!',(auth_delay*4)+(pwd_delay*3)+ (cmsg_delay*4)+start_delay);
+    displayText2('You have been successfully authenticated!!!',(auth_delay*4)+(pwd_delay*4)+ (cmsg_delay*4));
 
-    completeStep(0,(auth_delay*4)+(pwd_delay*3)+(cmsg_delay*4)+start_delay,"#Login");
+    completeStep(0,(auth_delay*4)+(pwd_delay*4)+(cmsg_delay*4)+start_delay,"#Login");
 
 };
 

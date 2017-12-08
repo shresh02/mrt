@@ -134,6 +134,9 @@ function setPassthought(){
 }
 
 
+
+
+
 function login(){
 
     displayText2('Think Passthought to Aunthenticate (1)',0);
@@ -153,11 +156,12 @@ function login(){
     displayText2('Classifying......',(auth_delay*4)+(pwd_delay*3) + (cmsg_delay*3));
     displayText2('Authentication Failed',(auth_delay*4)+(pwd_delay*3)+ (cmsg_delay*4));
 
-    displayText2('Sorry!! Your authentication has failed!!!',(auth_delay*4)+(pwd_delay*3)+ (cmsg_delay*4)+start_delay);
+    displayText2('Sorry!! Your authentication has failed!!!!!!',(auth_delay*4)+(pwd_delay*4)+ (cmsg_delay*4));
 
-    completeStep(0,(auth_delay*4)+(pwd_delay*3)+(cmsg_delay*4)+start_delay,"#Login");
+    completeStep(0,(auth_delay*4)+(pwd_delay*4)+(cmsg_delay*4)+start_delay,"#Login");
 
 };
+
 
 
 
