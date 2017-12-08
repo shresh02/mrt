@@ -2,15 +2,20 @@
 // https://www.w3schools.com/howto/howto_js_todolist.asp
 
 //Function that marks the sidebar elements as done
-var start_delay = 100;
+var start_delay = 1000;
 var delay = 10000//10000;//30000;
 var stage = 0;
 var pwd_delay = 4000;
-var blank_delay = 2000;
+var blank_delay = 4000;
 var pre_text_delay = 3000;
+var cmsg_delay = 5000;
 
 //Think Passthought delay to 5 seconds
-var think_delay = 5000
+var think_delay = 8000
+
+
+//Think Passthought delay to 5 seconds
+var auth_delay = 8000
 
 var instr_url1 = "When you see the words BLINK, please do so for 30 seconds"
 var instr_url2 = "step2_pretext"//"https://www.youtube.com/embed/81eRBN6o6Ic"
@@ -64,7 +69,6 @@ function displayText2(msg,delay){
     setTimeout(function(){ 
         DisplayTextAndSaveTime(msg)
         delay =delay 
-
         }, delay);
 }
 function babyphoto(){
@@ -128,33 +132,55 @@ function setPassthought(){
     completeStep(instr_url3,(think_delay*3)+(blank_delay*2),"#Passthought_Setting");
 }
 
+// function login(){
+
+//     displayText2('Think Passthought to Aunthenticate (1)',0);
+
+//     displayText2('Authentication Successful',(auth_delay*1)+(pwd_delay*0));
+    
+//     displayText2('Think Passthought to Aunthenticate (2)',(auth_delay*1)+(pwd_delay*1));
+//     displayText2('Authentication Successful',(auth_delay*2)+(pwd_delay*1));
+
+//     displayText2('Think Passthought to Aunthenticate (3)',(auth_delay*2)+(pwd_delay*2));
+//     displayText2('Authentication Successful',(auth_delay*3)+(pwd_delay*2));
+
+  
+//     displayText2('Think Passthought to Aunthenticate (4)',(auth_delay*3)+(pwd_delay*3));
+//     displayText2('Authentication Successful',(auth_delay*4)+(pwd_delay*3));
+//     displayText2('You have been successfully authenticated!!!',(auth_delay*4)+(pwd_delay*4));
+
+//     completeStep(0,(auth_delay*4)+(pwd_delay*4)+(cmsg_delay*1)+start_delay,"#Login");
+
+// };
+
+
+
 function login(){
 
     displayText2('Think Passthought to Aunthenticate (1)',0);
+    displayText2('Classifying......',(auth_delay*1)+(pwd_delay*0) + (cmsg_delay*0));
+    displayText2('Authentication Successful',(auth_delay*1)+(pwd_delay*0)+ (cmsg_delay*1));
+    
+    displayText2('Think Passthought to Aunthenticate (2)',(auth_delay*1)+(pwd_delay*1)+ (cmsg_delay*1));
+    displayText2('Classifying......',(auth_delay*2)+(pwd_delay*1) + (cmsg_delay*1));
+    displayText2('Authentication Successful',(auth_delay*2)+(pwd_delay*1)+ (cmsg_delay*2));
 
-    displayText2('Passthought Authenticated',(delay*1)+(pwd_delay*0));
-    displayText2('Think Passthought to Aunthenticate (2)',(delay*1)+(pwd_delay*1));
+    displayText2('Think Passthought to Aunthenticate (3)',(auth_delay*2)+(pwd_delay*2) + (cmsg_delay*2));
+    displayText2('Classifying......',(auth_delay*3)+(pwd_delay*2) + (cmsg_delay*2));
+    displayText2('Authentication Successful',(auth_delay*3)+(pwd_delay*2)+ (cmsg_delay*3));
 
+  
+    displayText2('Think Passthought to Aunthenticate (4)',(auth_delay*3)+(pwd_delay*3)+ (cmsg_delay*3));
+    displayText2('Classifying......',(auth_delay*4)+(pwd_delay*3) + (cmsg_delay*3));
+    displayText2('Authentication Successful',(auth_delay*4)+(pwd_delay*3)+ (cmsg_delay*4));
 
-    displayText2('Passthought Authenticated',(delay*2)+(pwd_delay*1));
-    displayText2('Think Passthought to Aunthenticate (3)',(delay*2)+(pwd_delay*2));
+    displayText2('You have been successfully authenticated!!!',(auth_delay*4)+(pwd_delay*3)+ (cmsg_delay*4)+start_delay);
 
-
-
-    displayText2('Passthought Authenticated',(delay*3)+(pwd_delay*2));
-    displayText2('You have been successfully authenticated!!!',(delay*3)+(pwd_delay*3));
-
-
-    displayText2('Passthought Authenticated',(delay*4)+(pwd_delay*3));
-    displayText2('You have been successfully authenticated!!!',(delay*4)+(pwd_delay*3));
-
-    displayText2('Passthought Authenticated',(delay*5)+(pwd_delay*4));
-    displayText2('You have been successfully authenticated!!!',(delay*5)+(pwd_delay*4));
-
-
-    completeStep(0,(delay*3)+(pwd_delay*3)+start_delay,"#Login");
+    completeStep(0,(auth_delay*4)+(pwd_delay*3)+(cmsg_delay*4)+start_delay,"#Login");
 
 };
+
+
 
 
 
