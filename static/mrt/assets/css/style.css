@@ -1041,6 +1041,7 @@ textarea::-ms-input-placeholder
  
     height:350px;
     border-style: solid;
+    padding-top: 60px;
 
 
 }

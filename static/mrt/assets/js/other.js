@@ -12,10 +12,13 @@ var cmsg_delay = 5000;
 
 //Think Passthought delay to 5 seconds
 var think_delay = 8000
-
-
 //Think Passthought delay to 5 seconds
 var auth_delay = 8000
+
+//For locally storing the event timestamps
+var obj = {
+   table: []
+};
 
 var instr_url1 = "When you see the words BLINK, please do so for 30 seconds"
 var instr_url2 = "step2_pretext"//"https://www.youtube.com/embed/81eRBN6o6Ic"
@@ -51,8 +54,8 @@ function DisplayTextAndSaveTime(msg){
         m = msg.replace(/[^a-zA-Z]/g, "");
         var url = base_url.concat(m,"/");}
     
-    //http.open("GET", url, false);// false for synchronous request
-    //http.send( null );
+    http.open("GET", url, false);// false for synchronous request
+    http.send( null );
     //console.log(http.responseText);
 
     document.getElementById("instructions").innerHTML = msg;
@@ -60,8 +63,19 @@ function DisplayTextAndSaveTime(msg){
 
     var time = JSON.stringify(new Date().getTime() / 1000);
     console.log(time, msg);
+    //obj.table.push({time: time, msg:msg});
     // json_data.table.push({time: time, prompt:msg});
 
+}
+function saveData(){
+
+    $.ajax({
+        url: "data.json",
+        type: "POST", 
+        data: obj,
+        processData: false,
+        contentType: 'application/json'
+    });
 }
 
 function displayText2(msg,delay){
@@ -75,6 +89,8 @@ function babyphoto(){
     document.getElementById("instructions").style.paddingTop = 0;
     document.getElementById("playtext").innerHTML = closingmsg;
     // document.getElementById("play").style.display= "inline";
+    //saveData();
+
 }
 function display_next_instructions(url){
     setTimeout(function(){

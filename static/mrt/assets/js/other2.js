@@ -51,8 +51,8 @@ function DisplayTextAndSaveTime(msg){
         m = msg.replace(/[^a-zA-Z]/g, "");
         var url = base_url.concat(m,"/");}
     
-    //http.open("GET", url, false);// false for synchronous request
-    //http.send( null );
+    http.open("GET", url, false);// false for synchronous request
+    http.send( null );
     //console.log(http.responseText);
 
     document.getElementById("instructions").innerHTML = msg;
