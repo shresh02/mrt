@@ -35,3 +35,5 @@ def save_readings(request):
     model = YourModel(json_field=data)
     model.save()
 
+def dashboard(request):
+    return render(request, 'dashboard.html', {})
